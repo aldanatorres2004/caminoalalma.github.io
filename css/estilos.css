@@ -1,0 +1,712 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+/* botón "hamburguesa" */
+/* BOTÓN HAMBURGUESA */
+.menu-btn {
+  background: rgb(214, 189, 138);
+  border-radius: 10%;
+  box-shadow: -5px 5px 5px hsl(180 100% 4% / 0.2);
+  padding: .75rem;
+  width: 3rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-btn .btn-linea {
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  background: hsl(0 0% 90%);
+  transition: all 0.3s ease-out;
+}
+
+.menuVisible .menu-btn .btn-linea:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 6px);
+}
+.menuVisible .menu-btn .btn-linea:nth-child(2) {
+  opacity: 0;
+}
+.menuVisible .menu-btn .btn-linea:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -6px);
+}
+
+/* MENÚ DESPLEGABLE (OCULTO) */
+.menu {
+  display: none; 
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 30%;
+  background-color: hsla(40, 48%, 69%, 0.406);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 8000;
+  
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .7em;
+}
+
+.menu ul li a {
+  font-family: "Antic Didone", serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: rgb(99, 67, 2);
+  background-color: #ecd3a4;
+  padding: .7em 1.5em;
+  border-radius: 15px;
+  border: 2px solid rgb(99, 67, 2);
+  transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+  background-color: hsla(40, 63%, 75%, 0.306);
+  color: white;
+}
+
+/* MENÚ ACTIVO */
+.menuVisible .menu {
+  display: flex; /* ⬅️ Solo visible cuando tiene la clase */
+  flex-direction: column;
+}
+
+
+
+
+body { 
+  
+  
+     background-color: rgb(254, 244, 223);
+     color: rgb(99, 67, 2);
+
+}
+
+
+/* Fondo Sobre nosotros */
+body.pagina-sobre-nosotros main {
+
+  padding: 40px;
+}
+
+body.pagina-sobre-nosotros .fondo-presentacion {
+position: relative;
+  background-image: url('../imagenes/fondomobile.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  z-index: 1;
+}
+
+  
+body.pagina-sobre-nosotros .fondo-presentacion::before {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+
+
+/* Fondo Desarrollo Personal */
+.seccion-fondo-desarrollopersonal {
+  
+  overflow: hidden;
+  background-image: 
+    url('../imagenes/persona.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto; /* ocupa solo el alto del contenido */
+  background-position: top center;
+  border-radius: 20px;
+  padding:0;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.seccion-fondo-desarrollopersonal .overlay {
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+  padding: 60px 20px; 
+}
+
+/* Fondo Terapias Holísticas */
+.seccion-fondo-terapias-holisticas {
+  overflow: hidden;
+  background-image: 
+    url('../imagenes/manos.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top center;
+  border-radius: 20px;
+  padding:0;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.seccion-fondo-terapias-holisticas .overlay {
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+  padding: 60px 20px;
+}
+
+
+
+
+
+
+
+/* ---------- CONTENEDOR DE LA IMAGEN ---------- */
+.imagen-fondo {
+  position: relative;
+  width: 90%;
+  height: 250px; /* ajustá según el tamaño de la imagen */
+  margin: 40px auto;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* ---------- CAPA SEMITRANSPARENTE Y BOTONES ---------- */
+.imagen-fondo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(191, 180, 180, 0.495); /* oscurece un poco para resaltar botones */
+}
+
+/* ---------- CONTENEDOR FLEX PARA LOS BOTONES ---------- */
+.imagen-fondo .botones {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  z-index: 1;
+}
+
+/* ---------- ESTILO DE LOS BOTONES ---------- */
+.boton {
+  background-color: #e6d5b8;
+  color: #4a2c19;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #d2b48c;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Antic Didone", serif;
+  font-weight:500;
+  font-style: normal;
+  font-size: 2em;
+  margin:.5em;
+  margin-bottom: 1.5em;
+}
+
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color:rgb(236, 211, 164);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.1);
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #6b3e1d;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #a56a3a; /* borde marrón suave */
+    border-radius: 25px; /* bordes redondeados */
+    font-family: inherit;
+    font-size: 1em;
+    background-color: #fffaf4;
+    color: #6b3e1d;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #b89470;
+  }
+
+  textarea {
+    resize: none;
+    height: 150px;
+  }
+
+  button {
+    display: block;
+    background-color: #a56a3a;
+    color: #fffaf4;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 30px;
+    margin: 20px auto 0;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+   
+  }
+
+  button:hover {
+    background-color: #8b5a2b;
+  }
+
+  span {
+    color: #b33a1b;
+  }
+
+
+
+
+
+.seccion-experiencia {
+  
+  text-align: right;
+  padding: 40px 20px;
+  font-family: "Cormorant Garamond", serif;
+  color: #6b3e17; /* Marrón */
+}
+
+.seccion-experiencia h2 {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  color: #7a4223;
+}
+
+
+
+
+.formulario-experiencia {
+  position: relative;
+  display: inline-block;
+}
+
+.miperfil {
+  position: absolute;
+  top: -20px;
+  right: -60px;
+  width: 60px;
+  height: 60px;
+}
+
+.miperfil img {
+  width: 100%;
+  height: auto;
+
+}
+
+
+
+textarea {
+  width: 300px;
+  height: 80px;
+  padding: 15px;
+  font-family: "Lora", serif;
+  font-size: 1rem;
+  border: 2px solid #4a2e16;
+  border-radius: 20px;
+  resize: none;
+  background-color: #fff;
+  box-shadow: 5px 5px 0 #8b5a2b; /* sombra marrón como en la imagen */
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #6b3e17;
+  opacity: 0.7;
+}
+
+
+
+
+p{  font-family: "Cormorant", serif;
+    font-weight:300;
+    font-style:normal ;
+    font-size: 1.2em;
+    margin: .5em;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+}
+
+
+
+figure img{ 
+max-width: 100%;
+height: auto;
+
+
+}
+
+
+
+
+
+
+
+
+nav ul { font-family: "Antic Didone", serif;
+      font-weight:300;
+      font-style:italic ;
+      font-size: 1.2em;
+      display: block;
+      position: static;
+
+ 
+}
+
+
+
+li{ 
+font-size: 1.5em;
+margin: 1.5em;
+margin-bottom: 1.5em;
+background-color: rgb(236, 211, 164);
+width: min-content;
+padding: .5em;
+border-radius: 25px; /* bordes redondeados */
+list-style: none;
+
+}
+
+
+img {
+     max-width: 100%;
+     
+}
+
+
+#youtube{ 
+  width:50px;
+
+
+  }
+
+#persona{
+    width: 20%;
+    margin: 2em;
+    margin-left: 35%;
+   
+}
+
+#logo {
+  width: 150px;
+  height: auto;
+  display: block; 
+ 
+
+}
+
+#miperfil {
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  position:fixed;
+  right:1em; 
+  top: 1em;
+ 
+
+
+}
+
+
+   
+header{
+    width: 100%;
+    background-color:rgb(236, 211, 164);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: solid  rgb(74, 50, 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+
+
+.logo  { 
+width: 120px; 
+height: auto; 
+
+}
+
+
+
+/* Contenedor del perfil (derecha) */
+.perfil-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Imagen del perfil */
+.logo-perfil {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #e8dcc3;
+}
+
+/* === FORMULARIO flotante === */
+.formulario-perfil {
+  display: none; /* 🔸 Oculto por defecto */
+  position: absolute;
+  top: 60px; /* debajo del logo */
+  right: 0;  /* alineado a la derecha */
+  background-color: #ffffff;
+  border: 1px solid #e8dcc3;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  padding: 20px;
+  width: 250px;
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cuando está activo */
+.form-activo {
+  display: block;
+}
+
+/* Estilos internos del formulario */
+.formulario-perfil h3 {
+  text-align: center;
+  color: #6b5e4b;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.formulario-perfil label {
+  display: block;
+  margin-bottom: 5px;
+  color: #6b5e4b;
+  font-size: 14px;
+}
+
+.formulario-perfil input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #e8dcc3;
+  border-radius: 6px;
+  background-color: #fffaf4;
+  font-size: 14px;
+}
+
+.formulario-perfil input:focus {
+  outline: none;
+  border-color: #d6c6a1;
+  box-shadow: 0 0 4px rgba(214,198,161,0.4);
+}
+
+.formulario-perfil button {
+  width: 100%;
+  padding: 8px 0;
+  background-color: #d6c6a1;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formulario-perfil button:hover {
+  background-color: #bda87f;
+}
+
+
+
+.logo-spotify {
+  width: 60px;   
+  height: auto;  
+}
+
+.foto-libros{
+  width: 60px;   
+  height: auto;  
+}
+
+
+.logo-youtube{
+  width: 60px;   
+  height: auto;  
+}
+
+
+
+
+
+.logo-sobrenosotros-der{
+display: flex;
+justify-content: right; 
+width: 95px;   
+height: 110px; 
+
+}
+
+
+.logo-sobrenosotros-izq{
+display: flex;
+justify-content: left; 
+width: 95px;   
+height: 110px; 
+
+}
+
+
+.titulo-con-imagen {
+  
+  display: flex;
+  justify-content: center; /* opcional, centra todo horizontalmente */
+  gap: 15px; /* espacio entre el texto y la imagen */
+}
+
+
+
+
+
+footer {
+  text-align: center; /* centra cualquier elemento inline como img */
+}
+
+.footer-img {
+  display: inline-block; 
+  width: 700px;  /* o el tamaño que quieras */
+  height: auto;
+}
+
+
+
+   
+
+   a{ 
+    color: rgb(99, 67, 2);
+    text-decoration: none;
+    margin: 1.5em;
+    padding: .5em;
+
+   }
+
+
+
+.carousel {
+  position:sticky;
+  width: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+}
+
+button.prev, button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+/* Estilos para menú móvil */
+
+
+
+    .menuVisible {
+        display: flex;
+    }
+    .menu-btn {
+        display: flex;
+    }
+
+    @media screen and (min-width:768px)  {
+  /* Dispositivos desde 768px ancho tablets*/
+}
+     @media screen and (min-width:992px)  {
+  /* Dispositivos desde 992px de ancho laptops/desktops */
+}
+@media only screen and (min-width:1200px) {
+  /* Dispositivos desde 1200px de ancho laptops/desktops */
+}
